@@ -44,7 +44,12 @@ Saves time for admins, site builders and editors.
 
 ## Custom Tweaks via Constants
 
-(content upcoming)
+To exclude a post type from the adding of the featured Image column, just add a constant to your `wp-config.php` file to a functions.php (of theme or child theme) or via a code snippet plugin. Here's an example:
+```
+define( 'QEFI_DISABLED_TYPES', [ 'woohoo-post-type', 'book', 'download-manager-plugin' ] );
+```
+
+That would result in NO Featured Image column and quick edit feature for the post type slugins: `woohoo-post-type`, `book` and `download-manager-plugin`
 
 ---
 
@@ -59,7 +64,7 @@ Saves time for admins, site builders and editors.
 
 This plugin comes as is.
 
-_Disclaimer 1:_ So far I will support the plugin for breaking errors to keep it working. Otherwise support will be very limited. Also, it will NEVER be released to WordPress.org Plugin Repository for a lot of reasons. Furthermore, I will ONLY add support for direct Oxygen 6+ add-on plugins. And I can only add support if I would own a license myself (for testing etc.). Therefore, if there might be Oxygen 6+ plugins you want me to add integration for, please open an issue on the plugin page on GitHub so we might discuss that. (Thanks in advance!)
+_Disclaimer 1:_ So far I will support the plugin for breaking errors to keep it working. Otherwise support will be very limited. Also, it will NEVER be released to WordPress.org Plugin Repository for a lot of reasons (ah, thanks, Matt!).
 
 _Disclaimer 2:_ All of the above might change. I do all this stuff only in my spare time.
 
