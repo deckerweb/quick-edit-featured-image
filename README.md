@@ -42,14 +42,22 @@ Saves time for admins, site builders and editors.
 
 ---
 
-## Custom Tweaks via Constants
+## Custom Tweaks
 
-To exclude a post type from the adding of the featured Image column, just add a constant to your `wp-config.php` file to a functions.php (of theme or child theme) or via a code snippet plugin. Here's an example:
+#### via Constant:
+
+To exclude a post type from the adding of the Featured Image column, just add a constant to your `wp-config.php` file, to a functions.php (of theme or child theme) or via a code snippet plugin. Here's an example – define the constant and add an array of post type slugs (note the square brackets which forming the array!):
 ```
 define( 'QEFI_DISABLED_TYPES', [ 'woohoo-post-type', 'book', 'download-manager-plugin' ] );
 ```
 
-That would result in NO Featured Image column and quick edit feature for the post type slugins: `woohoo-post-type`, `book` and `download-manager-plugin`
+That would result in **NO** Featured Image column and quick edit feature for these post type slug: `woohoo-post-type`, `book` and `download-manager-plugin`
+
+
+#### via Filter (for developers):
+
+Developers can use the filter `'ddw/quick_edit/post_types_disable'` --> is defined in function `ddw_qefi_post_types_disable()`
+This can be used to define which post types should not be supported (or should still be supported ...).
 
 ---
 
