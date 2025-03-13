@@ -361,7 +361,7 @@ function ddw_qefi_admin_inline_styles_scripts( $hook ) {
 	/** Register jQery script */
 	wp_register_script(
 		'qefi-featured-image',
-		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'qefi.js',
+		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'assets/js/qefi.js',
 		array( 'jquery' ),
 		'',
 		TRUE
