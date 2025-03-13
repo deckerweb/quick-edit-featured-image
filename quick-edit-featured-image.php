@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Quick Edit Featured Image
  * Plugin URI: https://github.com/deckerweb/quick-edit-featured-image
- * Description: Bring setting & changing of Featured Image to the quick Edit action screen in Post Type List Tables within the WordPress Admin. Out of the box this works for Posts, Pages and any Post Type. Can be disabled indiviually via code snippet.
+ * Description: This lightweight plugin allows to set and remove a Featured Image via the Quick Edit action screen in Post Type List Tables within the WordPress Admin. Out of the box this works for Posts, Pages and any public Post Type which supports Featured Images. (Can be disabled indiviually via code snippet or filter.)
  * Version: 1.0.0
  * Author: David Decker – DECKERWEB
  * Author URI: https://deckerweb.de/
@@ -74,6 +74,8 @@ function ddw_qefi_post_types_disable() {
  * Preset for German locales --> saves the use of a translation file ... :-)
  *
  * @uses get_user_locale()  If the user has a locale set to a non-empty string then it will be returned. Otherwise it returns the locale of get_locale().
+ * @uses get_post_type_object()
+ * @uses ddw_qefi_get_current_post_type()
  *
  * @param string $type  Key of the string type to output.
  * @return string $string  Key of used language string.
@@ -83,12 +85,17 @@ function ddw_qefi_image_strings( $type ) {
 	$german = [ 'de_DE', 'de_DE_formal', 'de_AT', 'de_CH', 'de_LU' ];
 	$locale = get_user_locale();
 	
+	$post_type                   = get_post_type_object( ddw_qefi_get_current_post_type() );
+	$label_featured_image        = $post_type->labels->featured_image;
+	//$label_set_featured_image    = $post_type->labels->set_featured_image;
+	//$label_remove_featured_image = $post_type->labels->remove_featured_image;
+	
 	$image                 = ( in_array( $locale, $german ) ) ? 'Bild' : __( 'Image', 'quick-edit-featured-image' );
-	$featured_image        = ( in_array( $locale, $german ) ) ? 'Beitragsbild' : __( 'Featured Image', 'quick-edit-featured-image' );
-	$set_featured_image    = ( in_array( $locale, $german ) ) ? 'Beitragsbild festlegen' : __( 'Set Featured Image', 'quick-edit-featured-image' );
-	$remove_featured_image = ( in_array( $locale, $german ) ) ? 'Beitragsbild entfernen' : __( 'Remove Featured Image', 'quick-edit-featured-image' );
-	$image_ok              = ( in_array( $locale, $german ) ) ? 'Beitragsbild ist gesetzt' : __( 'Featured Image is set', 'quick-edit-featured-image' );
-	$placeholder           = ( in_array( $locale, $german ) ) ? 'Derzeit kein Beitragsbild festgelegt' : __( 'No Featured Image yet', 'quick-edit-featured-image' );
+	$featured_image        = ( in_array( $locale, $german ) ) ? $label_featured_image : __( 'Featured Image', 'quick-edit-featured-image' );
+	$set_featured_image    = ( in_array( $locale, $german ) ) ? $label_featured_image . ' festlegen' : __( 'Set Featured Image', 'quick-edit-featured-image' );
+	$remove_featured_image = ( in_array( $locale, $german ) ) ? $label_featured_image . ' entfernen' : __( 'Remove Featured Image', 'quick-edit-featured-image' );
+	$image_ok              = ( in_array( $locale, $german ) ) ? $label_featured_image . ' ist gesetzt' : __( 'Featured Image is set', 'quick-edit-featured-image' );
+	$placeholder           = ( in_array( $locale, $german ) ) ? 'Derzeit kein ' . $label_featured_image . ' festgelegt' : __( 'No Featured Image yet', 'quick-edit-featured-image' );
 	
 	/** Check string type */
 	switch ( sanitize_key( $type ) ) {
@@ -139,7 +146,10 @@ add_filter( 'manage_edit-page_columns', 'ddw_qefi_featured_image_column' );
 function ddw_qefi_featured_image_column( $columns ) {
 	
 	/** Bail early if not enabled for Post Type */
-	if ( in_array( ddw_qefi_get_current_post_type(), ddw_qefi_post_types_disable() ) || ! is_post_type_viewable( ddw_qefi_get_current_post_type() ) ) {
+	if ( in_array( ddw_qefi_get_current_post_type(), ddw_qefi_post_types_disable() )
+		|| ! is_post_type_viewable( ddw_qefi_get_current_post_type() )
+		|| ! post_type_supports( ddw_qefi_get_current_post_type(), 'thumbnail' )
+	) {
 		return $columns;
 	}
 	
@@ -168,12 +178,14 @@ add_action( 'manage_pages_custom_column', 'ddw_qefi_column_display_featured_imag
 function ddw_qefi_column_display_featured_image( $column_name, $post_id ) {
 
 	/** Bail early if not enabled for Post Type */
-	if ( in_array( ddw_qefi_get_current_post_type(), ddw_qefi_post_types_disable() ) || ! is_post_type_viewable( ddw_qefi_get_current_post_type() ) ) {
+	if ( in_array( ddw_qefi_get_current_post_type(), ddw_qefi_post_types_disable() )
+		|| ! is_post_type_viewable( ddw_qefi_get_current_post_type() )
+		|| ! post_type_supports( ddw_qefi_get_current_post_type(), 'thumbnail' )
+	) {
 		return;
 	}
 
 	$edit        = esc_url( get_edit_post_link( $post_id ) );
-	$edit_ph = '#';
 	$image_ok    = esc_html( ddw_qefi_image_strings( 'image_ok' ) );
 	$placeholder = esc_html( ddw_qefi_image_strings( 'placeholder' ) );
 	
@@ -221,7 +233,10 @@ add_action( 'quick_edit_custom_box',  'ddw_qefi_quick_edit_featured_image', 10, 
 function ddw_qefi_quick_edit_featured_image( $column_name, $post_type ) {
 
 	/** Bail early if not enabled for Post Type */
-	if ( in_array( ddw_qefi_get_current_post_type(), ddw_qefi_post_types_disable() ) || ! is_post_type_viewable( ddw_qefi_get_current_post_type() ) ) {
+	if ( in_array( ddw_qefi_get_current_post_type(), ddw_qefi_post_types_disable() )
+		|| ! is_post_type_viewable( ddw_qefi_get_current_post_type() )
+		|| ! post_type_supports( ddw_qefi_get_current_post_type(), 'thumbnail' )
+	) {
 		return;
 	}
 
@@ -261,7 +276,10 @@ add_action( 'admin_enqueue_scripts', 'ddw_qefi_admin_inline_styles_scripts' );
 function ddw_qefi_admin_inline_styles_scripts( $hook ) {
 
 	/** Bail early if not enabled for Post Type */
-	if ( in_array( ddw_qefi_get_current_post_type(), ddw_qefi_post_types_disable() ) || ! is_post_type_viewable( ddw_qefi_get_current_post_type() ) ) {
+	if ( in_array( ddw_qefi_get_current_post_type(), ddw_qefi_post_types_disable() )
+		|| ! is_post_type_viewable( ddw_qefi_get_current_post_type() )
+		|| ! post_type_supports( ddw_qefi_get_current_post_type(), 'thumbnail' )
+	) {
 		return;
 	}
 
@@ -282,6 +300,10 @@ function ddw_qefi_admin_inline_styles_scripts( $hook ) {
 		
 		#qefi_featured_image .inline-edit-col {
 			margin-top: 1rem;
+		}
+		
+		#qefi_featured_image .inline-edit-col .title {
+			padding-right: .7rem;
 		}
 		
 		.inline-edit-col .qefi-upload-img :not(img) {
@@ -336,7 +358,7 @@ function ddw_qefi_admin_inline_styles_scripts( $hook ) {
 	/** Add inline styles to the WP Admin stylesheet */
 	wp_add_inline_style( 'list-tables', $inline_css );
 	
-	/** Register script */
+	/** Register jQery script */
 	wp_register_script(
 		'qefi-featured-image',
 		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'qefi.js',
