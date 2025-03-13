@@ -34,7 +34,11 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 
 ## How this Plugin Works
 
-(content upcoming)
+1. Adds a new column to the List Table for Posts, Pages, Post Types – if these support featured image and are public
+2. Adds the featured image to "Quick Edit" (inline edit) – this saves a lot of clicks & time to set or remove a featured image for a lot of posts (no longer opening the post, setup, save, close tab or going back in browser ...)
+3. Placeholder icon image for all Posts/ Post Types that have no featured image yet – clicking on icon opens quick edit
+
+Saves time for admins, site builders and editors.
 
 ---
 
