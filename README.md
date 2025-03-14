@@ -26,7 +26,7 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 ## Installation
 
 **Quick Install**
-1. Download [quick-edit-featured-image.zip](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/quick-edit-featured-image.zip)
+1. **Download ZIP:** [**quick-edit-featured-image.zip**](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/quick-edit-featured-image.zip)
 2. Upload via WordPress Plugins > Add New > Upload Plugin
 3. Once activated, you’ll see the new admin column "Image" in the Post list table for example.
 
@@ -67,8 +67,8 @@ This can be used to define which post types should not be supported (or should s
 
 ## Changelog / Releases
 
-### 1.0.0
-* Initial release
+### v1.0.0
+* Initial release – _Yeah!_
 * Custom disabling for post types via constant or filter
 * Plugin support: Disabled by default for _WooCommerce_ and _Meta Box_ post types
 
