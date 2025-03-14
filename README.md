@@ -2,6 +2,12 @@
 
 This lightweight plugin allows to set and remove a Featured Image via the Quick Edit action screen in Post Type List Tables within the WordPress Admin. Out of the box this works for Posts, Pages and any public Post Type which supports Featured Images. (Can be disabled indiviually via code snippet or filter.)
 
+![Quick Edit Featured Image – Inline edit](https://raw.githubusercontent.com/deckerweb/quick-edit-featured-image/master/assets-github/screenshot-inline-edit.png)
+Screenshot: example of inline edit view
+
+![Quick Edit Featured Image – Admin column](https://raw.githubusercontent.com/deckerweb/quick-edit-featured-image/master/assets-github/screenshot-admin-column.png)
+Screenshot: the added column in the list table, plus placeholder image icon
+
 ### Tested Compatibility
 - **WordPress**: 6.7.2
 - **PHP**: 8.3+
