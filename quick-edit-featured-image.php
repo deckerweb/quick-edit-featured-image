@@ -85,8 +85,8 @@ function ddw_qefi_image_strings( $type ) {
 	$german = [ 'de_DE', 'de_DE_formal', 'de_AT', 'de_CH', 'de_LU' ];
 	$locale = get_user_locale();
 	
-	$post_type                   = get_post_type_object( ddw_qefi_get_current_post_type() );
-	$label_featured_image        = $post_type->labels->featured_image;
+	$post_type            = get_post_type_object( ddw_qefi_get_current_post_type() );
+	$label_featured_image = $post_type->labels->featured_image;
 	//$label_set_featured_image    = $post_type->labels->set_featured_image;
 	//$label_remove_featured_image = $post_type->labels->remove_featured_image;
 	
