@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name:  Quick Edit Featured Image
 Plugin URI:   https://github.com/deckerweb/quick-edit-featured-image
@@ -13,14 +12,11 @@ License:      GPL v2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Requires WP:  6.7
 Requires PHP: 7.4
-
 Copyright:    © 2025, David Decker – DECKERWEB
 */
 
 /** Prevent direct access */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;  // Exit if accessed directly.
-}
+if ( ! defined( 'ABSPATH' ) ) exit;  // Exit if accessed directly.
 
 if ( ! class_exists( 'DDW_Quick_Edit_Featured_Image' ) ) :
 
