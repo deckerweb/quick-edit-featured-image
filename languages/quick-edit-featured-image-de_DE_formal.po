@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quick Edit Featured Image\n"
+"POT-Creation-Date: 2025-03-26 08:44+0100\n"
+"PO-Revision-Date: 2025-03-26 08:48+0100\n"
+"Last-Translator: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
+"Language-Team: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
+"Language: de_DE@formal\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: quick-edit-featured-image.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: quick-edit-featured-image.php:117
+msgid "Image"
+msgstr "Bild"
+
+#: quick-edit-featured-image.php:118
+msgid "Featured Image"
+msgstr "Beitragsbild"
+
+#: quick-edit-featured-image.php:119
+msgid "Set Featured Image"
+msgstr "Beitragsbild festlegen"
+
+#: quick-edit-featured-image.php:120
+msgid "Remove Featured Image"
+msgstr "Beitragsbild entfernen"
+
+#: quick-edit-featured-image.php:121
+msgid "Featured Image is set"
+msgstr "Beitragsbild ist festgelegt"
+
+#: quick-edit-featured-image.php:122
+msgid "No Featured Image yet"
+msgstr "Noch kein Beitragsbild"
+
+#: quick-edit-featured-image.php:435
+msgctxt "Plugins page listing"
+msgid "Donate"
+msgstr "Spenden"
+
+#: quick-edit-featured-image.php:441
+msgctxt "Plugins page listing"
+msgid "Join our Newsletter"
+msgstr "Jetzt Newsletter"
+
+#. Plugin Name of the plugin/theme
+msgid "Quick Edit Featured Image"
+msgstr "Featured Image Schnellbearbeitung"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/deckerweb/quick-edit-featured-image"
+msgstr "https://github.com/deckerweb/quick-edit-featured-image"
+
+#. Description of the plugin/theme
+msgid ""
+"This lightweight plugin allows to set and remove a Featured Image via the "
+"Quick Edit action screen in Post Type List Tables within the WordPress "
+"Admin. Out of the box this works for Posts, Pages and any public Post Type "
+"which supports Featured Images."
+msgstr ""
+"Dieses leichtgewichtige Plugin ermöglicht das Einstellen und Entfernen des "
+"Beitragsbildes (Featured Image) über die Aktion Schnellbearbeitung (Quick "
+"Edit) in den Übersichtstabellen von Beitragstypen (Inhaltstypen) im "
+"WordPress-Adminbereich. Es funktioniert sofort für Beiträge, Seiten und "
+"jeden öffentlichen Beitragstyp (Inhaltstyp), der ein Featured Image "
+"unterstützt."
+
+#. Author of the plugin/theme
+msgid "David Decker – DECKERWEB"
+msgstr "David Decker - DECKERWEB"
+
+#. Author URI of the plugin/theme
+msgid "https://deckerweb.de/"
+msgstr "https://deckerweb.de/"

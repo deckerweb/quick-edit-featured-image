@@ -9,8 +9,8 @@ Screenshot: example of inline edit view
 Screenshot: the added column in the list table, plus placeholder image icon
 
 ### Tested Compatibility
-- **WordPress**: 6.7.2
-- **PHP**: 8.3+
+- **WordPress**: 6.7.2 / 6.8 Beta
+- **PHP**: 8.0 – 8.3
 
 ---
 
@@ -75,7 +75,12 @@ This can be used to define which post types should not be supported (or should s
 
 ## Changelog / Releases
 
-### v1.0.0
+### 🎉 v1.1.0 – 2025-03-??
+* New: Transformed code into class-based approach (more future-proof)
+* New: Added `.pot` file (to translate plugin into your language), plus packaged German translations
+* Plugin: Add meta links on WP Plugins page
+
+### 🎉 v1.0.0 – 2025-03-14
 * Initial release – _Yeah!_
 * Custom disabling for post types via constant or filter
 * Plugin support: Disabled by default for _WooCommerce_ and _Meta Box_ post types
@@ -96,4 +101,4 @@ _Most of all:_ Have fun building great sites!!! ;-)
 
 Icon used in promo graphics: © Remix Icon
 
-Copyright © 2025 David Decker – DECKERWEB.de
+Copyright: © 2025, David Decker – DECKERWEB.de
