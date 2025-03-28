@@ -30,21 +30,21 @@ class DDW_Quick_Edit_Featured_Image {
 	 */
 	public function __construct() {
 		
-		add_filter( 'manage_posts_columns',     array( $this, 'featured_image_column' ) );
-		add_filter( 'manage_pages_columns',     array( $this, 'featured_image_column' ) );
-		add_filter( 'manage_edit-post_columns', array( $this, 'featured_image_column' ) );
-		add_filter( 'manage_edit-page_columns', array( $this, 'featured_image_column' ) );
+		add_filter( 'manage_posts_columns',       array( $this, 'featured_image_column' ) );
+		add_filter( 'manage_pages_columns',       array( $this, 'featured_image_column' ) );
+		add_filter( 'manage_edit-post_columns',   array( $this, 'featured_image_column' ) );
+		add_filter( 'manage_edit-page_columns',   array( $this, 'featured_image_column' ) );
 		//add_filter( 'manage_edit-{post_type}_columns', array( $this, 'featured_image_column' ), 10, 2 );
 		
 		add_action( 'manage_posts_custom_column', array( $this, 'column_display_featured_image' ), 10, 2 );
 		add_action( 'manage_pages_custom_column', array( $this, 'column_display_featured_image' ), 10, 2 );
 		//add_action( 'manage_{post_type}_custom_column', array( $this, 'column_display_featured_image' ), 10, 2 );
 		
-		add_action( 'quick_edit_custom_box', array( $this, 'quick_edit_featured_image' ), 10, 2 );
+		add_action( 'quick_edit_custom_box',      array( $this, 'quick_edit_featured_image' ), 10, 2 );
 		
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_inline_styles_scripts' ) );
+		add_action( 'admin_enqueue_scripts',      array( $this, 'admin_inline_styles_scripts' ) );
 		
-		add_filter( 'debug_information',     array( $this, 'site_health_debug_info' ), 9 );
+		add_filter( 'debug_information',          array( $this, 'site_health_debug_info' ), 9 );
 	}
 	
 	/**
@@ -83,9 +83,11 @@ class DDW_Quick_Edit_Featured_Image {
 		$disabled_by_default = [ 'mb-post-type', 'mb-taxonomy', 'meta-box', 'mb-relationship', 'mb-settings-page', 'mb-views', $wc_product ];
 		$disabled_by_user    = defined( 'QEFI_DISABLED_TYPES' ) ? (array) QEFI_DISABLED_TYPES : [];
 		
+		$post_types_disable = array_merge( $disabled_by_default, $disabled_by_user );
+		
 		$post_types_disable = apply_filters(
 			'ddw/quick_edit/post_types_disable',
-			array_merge( $disabled_by_default, $disabled_by_user )
+			$post_types_disable
 		);
 		
 		return $post_types_disable;
@@ -428,6 +430,10 @@ class DDW_Quick_Edit_Featured_Image {
 				'QEFI_DISABLED_TYPES' => array(
 					'label' => 'QEFI_DISABLED_TYPES',
 					'value' => ( ! defined( 'QEFI_DISABLED_TYPES' ) ? $string_undefined : ( QEFI_DISABLED_TYPES ? $string_enabled . $string_value . implode( ', ', array_map( 'sanitize_key', QEFI_DISABLED_TYPES ) ) : $string_disabled ) ),
+				),
+				'qefi_all_disabled_types' => array(
+					'label' => esc_html__( 'All disabled post types', 'quick-edit-featured-image' ),
+					'value' => implode( ', ', array_map( 'sanitize_key', $this->post_types_disable() ) ),
 				),
 			),  // end array
 		);
