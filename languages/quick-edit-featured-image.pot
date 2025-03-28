@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quick Edit Featured Image\n"
-"POT-Creation-Date: 2025-03-26 08:44+0100\n"
+"POT-Creation-Date: 2025-03-28 12:05+0100\n"
 "PO-Revision-Date: 2025-03-26 08:44+0100\n"
 "Last-Translator: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
 "Language-Team: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
@@ -16,47 +16,88 @@ msgstr ""
 "X-Poedit-WPHeader: quick-edit-featured-image.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: quick-edit-featured-image.php:117
+#: quick-edit-featured-image.php:115
 msgid "Image"
 msgstr ""
 
-#: quick-edit-featured-image.php:118
+#: quick-edit-featured-image.php:116
 msgid "Featured Image"
 msgstr ""
 
-#: quick-edit-featured-image.php:119
+#: quick-edit-featured-image.php:117
 msgid "Set Featured Image"
 msgstr ""
 
-#: quick-edit-featured-image.php:120
+#: quick-edit-featured-image.php:118
 msgid "Remove Featured Image"
 msgstr ""
 
-#: quick-edit-featured-image.php:121
+#: quick-edit-featured-image.php:119
 msgid "Featured Image is set"
 msgstr ""
 
-#: quick-edit-featured-image.php:122
+#: quick-edit-featured-image.php:120
 msgid "No Featured Image yet"
 msgstr ""
 
-#: quick-edit-featured-image.php:435
+#: quick-edit-featured-image.php:407
+msgctxt "Site Health Debug info"
+msgid "Undefined"
+msgstr ""
+
+#: quick-edit-featured-image.php:408
+msgctxt "Site Health Debug info"
+msgid "Enabled"
+msgstr ""
+
+#: quick-edit-featured-image.php:409
+msgctxt "Site Health Debug info"
+msgid "Disabled"
+msgstr ""
+
+#: quick-edit-featured-image.php:410
+msgctxt "Site Health Debug info"
+msgid "value"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: quick-edit-featured-image.php:414
+msgid "Quick Edit Featured Image"
+msgstr ""
+
+#: quick-edit-featured-image.php:414
+msgid "Plugin"
+msgstr ""
+
+#: quick-edit-featured-image.php:419
+msgid "Plugin version"
+msgstr ""
+
+#: quick-edit-featured-image.php:423
+msgid "WordPress Install Type"
+msgstr ""
+
+#: quick-edit-featured-image.php:424
+msgid "Multisite install"
+msgstr ""
+
+#: quick-edit-featured-image.php:424
+msgid "Single Site install"
+msgstr ""
+
+#: quick-edit-featured-image.php:475
 msgctxt "Plugins page listing"
 msgid "Donate"
 msgstr ""
 
-#: quick-edit-featured-image.php:441
+#: quick-edit-featured-image.php:481
 msgctxt "Plugins page listing"
 msgid "Join our Newsletter"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Quick Edit Featured Image"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
