@@ -44,7 +44,7 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 
 1. Adds a new column to the List Table for Posts, Pages, Post Types – if these support Featured Image and are public (post type needs support for `thumbnail` in WordPress terms)
 2. Adds the Featured Image to **Quick Edit** (inline edit) – this saves a lot of clicks & time to set or remove a featured image for a lot of posts (no longer opening the post, setup, save, close tab or going back in browser ...)
-3. Placeholder icon image for all Posts/ Post Types that have no featured image yet – clicking on icon opens Quick Edit
+3. Placeholder icon image for all Posts/ Post Types that have no featured image yet – clicking on icon opens _Quick Edit_
 
 **Saves time for admins, site builders and editors!**
 
@@ -63,20 +63,23 @@ To exclude a post type from the adding of the Featured Image column, just add a 
 define( 'QEFI_DISABLED_TYPES', [ 'woohoo-post-type', 'book', 'download-manager-plugin' ] );
 ```
 
-That would result in **NO** Featured Image column and quick edit feature for these post type slugs: `woohoo-post-type`, `book` and `download-manager-plugin`
+That would result in **NO** Featured Image column and **NO** quick edit feature for these post type slugs: `woohoo-post-type`, `book` and `download-manager-plugin`
+
+NOTE: The declaration needs every post type slug in single quotes, comma separated and enclosed in square brackets like in the example above. 
 
 
 #### via Filter (for developers):
 
-Developers can use the filter `'ddw/quick_edit/post_types_disable'` --> is defined in function `ddw_qefi_post_types_disable()`
+Developers can use the filter `'ddw/quick_edit/post_types_disable'` --> is defined in class method `post_types_disable()`
 This can be used to define which post types should not be supported (or should still be supported ...).
 
 ---
 
 ## Changelog / Releases
 
-### 🎉 v1.1.0 – 2025-03-??
+### 🎉 v1.1.0 – 2025-03-28
 * New: Transformed code into class-based approach (more future-proof)
+* New: Add info to Site Health Debug, useful for our constants for custom tweaking
 * New: Added `.pot` file (to translate plugin into your language), plus packaged German translations
 * Plugin: Add meta links on WP Plugins page
 
