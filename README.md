@@ -65,13 +65,24 @@ define( 'QEFI_DISABLED_TYPES', [ 'woohoo-post-type', 'book', 'download-manager-p
 
 That would result in **NO** Featured Image column and **NO** quick edit feature for these post type slugs: `woohoo-post-type`, `book` and `download-manager-plugin`
 
-NOTE: The declaration needs every post type slug in single quotes, comma separated and enclosed in square brackets like in the example above. 
+NOTE: The declaration needs every post type slug to be in single quotes, comma separated and the whole thing enclosed in square brackets like in the example above. 
 
 
 #### via Filter (for developers):
 
 Developers can use the filter `'ddw/quick_edit/post_types_disable'` --> is defined in class method `post_types_disable()`
 This can be used to define which post types should not be supported (or should still be supported ...).
+
+Typical usage:
+```
+add_filter( 'ddw/quick_edit/post_types_disable', 'prefix_your_custom_function' );
+function prefix_your_custom_function( $post_types_disable ) {
+
+	// do your stuff
+	
+	return (array) $post_types_disable;
+}
+```
 
 ---
 
