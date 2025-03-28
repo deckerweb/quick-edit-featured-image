@@ -8,7 +8,7 @@ Author:       David Decker – DECKERWEB
 Author URI:   https://deckerweb.de/
 Text Domain:  quick-edit-featured-image
 Domain Path:  /languages/
-License:      GPL v2 or later
+License:      GPL-2.0-or-later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Requires WP:  6.7
 Requires PHP: 7.4
@@ -43,6 +43,8 @@ class DDW_Quick_Edit_Featured_Image {
 		add_action( 'quick_edit_custom_box', array( $this, 'quick_edit_featured_image' ), 10, 2 );
 		
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_inline_styles_scripts' ) );
+		
+		add_filter( 'debug_information',     array( $this, 'site_health_debug_info' ), 9 );
 	}
 	
 	/**
@@ -390,6 +392,48 @@ class DDW_Quick_Edit_Featured_Image {
 			);
 			
 		}  // end if
+	}
+	
+	/**
+	 * Add additional plugin related info to the Site Health Debug Info section.
+	 *
+	 * @link https://make.wordpress.org/core/2019/04/25/site-health-check-in-5-2/
+	 *
+	 * @param array $debug_info Array holding all Debug Info items.
+	 * @return array Modified array of Debug Info.
+	 */
+	public function site_health_debug_info( $debug_info ) {
+	
+		$string_undefined = esc_html_x( 'Undefined', 'Site Health Debug info', 'quick-edit-featured-image' );
+		$string_enabled   = esc_html_x( 'Enabled', 'Site Health Debug info', 'quick-edit-featured-image' );
+		$string_disabled  = esc_html_x( 'Disabled', 'Site Health Debug info', 'quick-edit-featured-image' );
+		$string_value     = ' – ' . esc_html_x( 'value', 'Site Health Debug info', 'quick-edit-featured-image' ) . ': ';
+	
+		/** Add our Debug info */
+		$debug_info[ 'quick-edit-featured-image' ] = array(
+			'label'  => esc_html__( 'Quick Edit Featured Image', 'quick-edit-featured-image' ) . ' (' . esc_html__( 'Plugin', 'quick-edit-featured-image' ) . ')',
+			'fields' => array(
+	
+				/** Various values */
+				'snqn_plugin_version' => array(
+					'label' => esc_html__( 'Plugin version', 'quick-edit-featured-image' ),
+					'value' => self::VERSION,
+				),
+				'snqn_install_type' => array(
+					'label' => esc_html__( 'WordPress Install Type', 'quick-edit-featured-image' ),
+					'value' => ( is_multisite() ? esc_html__( 'Multisite install', 'quick-edit-featured-image' ) : esc_html__( 'Single Site install', 'quick-edit-featured-image' ) ),
+				),
+	
+				/** Quick Edit Featured Image constants */
+				'QEFI_DISABLED_TYPES' => array(
+					'label' => 'QEFI_DISABLED_TYPES',
+					'value' => ( ! defined( 'QEFI_DISABLED_TYPES' ) ? $string_undefined : ( QEFI_DISABLED_TYPES ? $string_enabled . $string_value . implode( ', ', array_map( 'sanitize_key', QEFI_DISABLED_TYPES ) ) : $string_disabled ) ),
+				),
+			),  // end array
+		);
+	
+		/** Return modified Debug Info array */
+		return $debug_info;
 	}
 	
 }  // end of class
