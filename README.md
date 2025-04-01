@@ -88,6 +88,9 @@ function prefix_your_custom_function( $post_types_disable ) {
 
 ## Changelog / Releases
 
+### 🎉 v1.2.0 – 2025-04-??
+* New: Installable and updateable via [Git Updater plugin](https://git-updater.com/)
+
 ### 🎉 v1.1.0 – 2025-03-28
 * New: Transformed code into class-based approach (more future-proof)
 * New: Add info to Site Health Debug, useful for our constants for custom tweaking
@@ -115,4 +118,4 @@ _Most of all:_ Have fun building great sites!!! ;-)
 
 Icon used in promo graphics: © Remix Icon
 
-Copyright: © 2025, David Decker – DECKERWEB.de
+Readme & Plugin Copyright: © 2025, David Decker – DECKERWEB.de
