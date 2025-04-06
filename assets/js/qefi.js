@@ -9,9 +9,9 @@ jQuery(function($){
 
 		const button = $(this);
 		const customUploader = wp.media({
-			title: qefi_strings,	// 'Set featured image'
+			title: qefi_strings.set_featured_image,	// 'Set featured image'
 			library : { type : 'image' },
-			button: { text: qefi_strings },
+			button: { text: qefi_strings.set_featured_image },
 		}).on( 'select', () => {
 			const attachment = customUploader.state().get('selection').first().toJSON();
 			button.removeClass('button').html( '<img src="' + attachment.url + '" />').next().val(attachment.id).parent().next().show();
@@ -22,7 +22,7 @@ jQuery(function($){
 	/** Remove Featured image */
 	$('body').on('click', '.qefi-remove-img', function( event ) {
 		event.preventDefault();
-		$(this).hide().prev().find( '[name="_thumbnail_id"]').val('-1').prev().html( qefi_strings ).addClass('button');
+		$(this).hide().prev().find( '[name="_thumbnail_id"]').val('-1').prev().html( qefi_strings.set_featured_image ).addClass('button');
 	});
 
 	const $wp_inline_edit = inlineEditPost.edit;

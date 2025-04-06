@@ -12,7 +12,7 @@ License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Requires WP:       6.7
 Requires PHP:      7.4
-GitHub Plugin URI: deckerweb/quick-edit-featured-image
+GitHub Plugin URI: https://github.com/deckerweb/quick-edit-featured-image
 GitHub Branch:     master
 Copyright:         © 2025, David Decker – DECKERWEB
 */
@@ -82,7 +82,7 @@ class DDW_Quick_Edit_Featured_Image {
 		
 		$wc_product = class_exists( 'WooCommerce' ) ? 'product' : '';
 		
-		$disabled_by_default = [ 'mb-post-type', 'mb-taxonomy', 'meta-box', 'mb-relationship', 'mb-settings-page', 'mb-views', $wc_product ];
+		$disabled_by_default = [ 'qefi_test_type', 'mb-post-type', 'mb-taxonomy', 'meta-box', 'mb-relationship', 'mb-settings-page', 'mb-views', $wc_product ];
 		$disabled_by_user    = defined( 'QEFI_DISABLED_TYPES' ) ? (array) QEFI_DISABLED_TYPES : [];
 		
 		$post_types_disable = array_merge( $disabled_by_default, $disabled_by_user );
@@ -241,7 +241,7 @@ class DDW_Quick_Edit_Featured_Image {
 	 * @param string $column_name  ID of the list table column.
 	 * @param string $post_type    Slug ID of the post type.
 	 */
-	function quick_edit_featured_image( $column_name, $post_type ) {
+	public function quick_edit_featured_image( $column_name, $post_type ) {
 	
 		/** Bail early if not enabled for Post Type */
 		if ( in_array( $this->get_current_post_type(), $this->post_types_disable() )
@@ -281,7 +281,7 @@ class DDW_Quick_Edit_Featured_Image {
 	 *
 	 * @param string $hook  Admin screen hook handle to check for.
 	 */
-	function admin_inline_styles_scripts( $hook ) {
+	public function admin_inline_styles_scripts( $hook ) {
 	
 		/** Bail early if not enabled for Post Type */
 		if ( in_array( $this->get_current_post_type(), $this->post_types_disable() )
@@ -386,7 +386,7 @@ class DDW_Quick_Edit_Featured_Image {
 			/** Finally, enqueue the script */
 			wp_enqueue_script( 'qefi-featured-image' );
 			
-			$script_strings = array( esc_html( $this->image_strings( 'set_featured_image' ) ) );
+			$script_strings = array( 'set_featured_image' => esc_html( $this->image_strings( 'set_featured_image' ) ) );
 			
 			/** Localize strings in the script */
 			wp_localize_script(
@@ -408,6 +408,8 @@ class DDW_Quick_Edit_Featured_Image {
 	 */
 	public function site_health_debug_info( $debug_info ) {
 	
+		load_plugin_textdomain( 'quick-edit-featured-image', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		
 		$string_undefined = esc_html_x( 'Undefined', 'Site Health Debug info', 'quick-edit-featured-image' );
 		$string_enabled   = esc_html_x( 'Enabled', 'Site Health Debug info', 'quick-edit-featured-image' );
 		$string_disabled  = esc_html_x( 'Disabled', 'Site Health Debug info', 'quick-edit-featured-image' );
