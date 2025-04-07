@@ -13,7 +13,7 @@ License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Requires WP:       6.7
 Requires PHP:      7.4
 GitHub Plugin URI: https://github.com/deckerweb/quick-edit-featured-image
-GitHub Branch:     master
+Primary Branch:    main
 Copyright:         © 2025, David Decker – DECKERWEB
 */
 

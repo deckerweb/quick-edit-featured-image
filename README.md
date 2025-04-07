@@ -12,7 +12,7 @@ Screenshot: the added column in the list table, plus placeholder image icon
 * Tags: featured image, quick edit, admin, list table, post types, image column
 * Requires at least: 6.7
 * Requires PHP: 7.4
-* Stable tag: [master](https://github.com/deckerweb/quick-edit-featured-image/releases/latest)
+* Stable tag: [main](https://github.com/deckerweb/quick-edit-featured-image/releases/latest)
 * Donate link: https://paypal.me/deckerweb
 * License: GPL v2 or later
 
