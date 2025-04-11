@@ -132,7 +132,7 @@ Because the restrictions there for plugin authors are becoming more and more. It
 **The Releases**
 
 ### 🎉 v1.2.1 – 2025-04-??
-* New: Confirmed full compatibility with ClassicPress 2.4.x
+* New: Confirmed full compatibility with ClassicPress 2.x
 
 ### 🎉 v1.2.0 – 2025-04-06
 * New: Installable and updateable via [Git Updater plugin](https://git-updater.com/)

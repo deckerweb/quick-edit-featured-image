@@ -12,7 +12,7 @@ License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Requires WP:       6.7
 Requires PHP:      7.4
-Requires CP:       2.4.0
+Requires CP:       2.0.0
 Update URI:        https://github.com/deckerweb/quick-edit-featured-image/
 GitHub Plugin URI: https://github.com/deckerweb/quick-edit-featured-image
 Primary Branch:    main
