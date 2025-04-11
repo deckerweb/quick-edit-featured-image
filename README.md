@@ -44,6 +44,7 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 
 ### Tested Compatibility
 - **WordPress**: 6.7.2 / 6.8 Beta
+- **ClassicPress:** 2.4.0 / 2.4.1
 - **PHP**: 8.0 – 8.3
 
 ---
@@ -112,6 +113,10 @@ function prefix_your_custom_function( $post_types_disable ) {
 Good question. But these type of plugins usually only tweak the appearance of the post type list table and add an image column. Most of them do not offer the quick editing.
 
 
+### Can I use this plugin with ClassicPress? 
+Yes, you can! It works perfectly fine, I tested it with ClassicPress 2.4.x without any issues. It will be a great helper tool for any ClassicPress user, too! ... and it fully supports the "ClassicPress spirit" :-)
+
+
 ### Why did you create this plugin? 
 I saw and found the code snippet to achieve this feature. It was amazing and I know I wanted that for myself and all client sites. When looking at the code snippet I wanted some enhancements so the decision was made to make a plugin out of it.
 
@@ -125,6 +130,9 @@ Because the restrictions there for plugin authors are becoming more and more. It
 ## Changelog 
 
 **The Releases**
+
+### 🎉 v1.2.1 – 2025-04-??
+* New: Confirmed full compatibility with ClassicPress 2.4.x
 
 ### 🎉 v1.2.0 – 2025-04-06
 * New: Installable and updateable via [Git Updater plugin](https://git-updater.com/)
