@@ -17,6 +17,28 @@ Update URI:        https://github.com/deckerweb/quick-edit-featured-image/
 GitHub Plugin URI: https://github.com/deckerweb/quick-edit-featured-image
 Primary Branch:    main
 Copyright:         © 2025, David Decker – DECKERWEB
+
+TESTED WITH:
+Product			Versions
+--------------------------------------------------------------------------------------------------------------
+PHP 			8.0, 8.3
+WordPress		6.7.2 ... 6.8 Beta
+ClassicPress	2.4.x
+--------------------------------------------------------------------------------------------------------------
+
+VERSION HISTORY:
+Date        Version     Description
+--------------------------------------------------------------------------------------------------------------
+2025-04-??	1.3.0		New: Plugin usable as Code Snippet
+						New: Confirmed full compatibility with _ClassicPress_ 2.x
+						Improved: Translation loading (including snippet version)
+2ß25-04-06	1.2.0		New: Installable and updateable via Git Updater plugin
+						Improved: Script localization
+2025-03-28	1.1.0       New: Transformed code into class-based approach (more future-proof)
+						New: Add info to Site Health Debug
+						New: Add .pot file, plus German translations
+2025-03-14	1.0.0       Initial public release
+--------------------------------------------------------------------------------------------------------------
 */
 
 /** Prevent direct access */
