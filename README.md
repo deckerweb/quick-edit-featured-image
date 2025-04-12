@@ -66,11 +66,17 @@ Also NOTE: When using the snippet version you have to re-save the Permalinks in 
 
 ## Updates 
 
+#### For Plugin Version:
+
 1) Alternative 1: Just download a new [ZIP file](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/quick-edit-featured-image.zip) (see above), upload and override existing version. Done.
 
 2) Alternative 2: Use the (free) [**_Git Updater_ plugin**](https://git-updater.com/) and get updates automatically.
 
 3) Alternative 3: Upcoming! – In future I will built-in our own deckerweb updater. This is currently being worked on for my plugins. Stay tuned!
+
+#### For Code Snippet Version:
+
+Just manually: Download the latest Snippet version (see above) and import it in your favorite snippets manager plugin. – You can delete the old snippet; then just activate the new one. Done.
 
 ---
 
@@ -164,7 +170,7 @@ Good question. But these type of plugins usually only tweak the appearance of th
 
 
 ### Can I use this plugin with _ClassicPress_? 
-Yes, you can! It works perfectly fine, I tested it with _ClassicPress_ 2.4.x without any issues. It will be a great helper tool for any _ClassicPress_ user, too! ... and it fully supports the "ClassicPress spirit" 😀.
+Yes, you can! It works perfectly fine, I tested it with _ClassicPress_ 2.4.x without any issues. It will be a great helper tool for any _ClassicPress_ user, too! ... and it fully supports the "ClassicPress spirit" 😀. Note: For _ClassicPress_ the **plugin version** is recommended, as the various snippet plugins seem not to be working correctly (with/ in CP).
 
 
 ### Why did you create this plugin? 
@@ -181,7 +187,7 @@ Because the restrictions there for plugin authors are becoming more and more. It
 
 **The Releases**
 
-### 🎉 v1.3.0 – 2025-04-??
+### 🎉 v1.3.0 – 2025-04-12
 * New: The "plugin" can now also be used as Code Snippet version, and is working identically! (see [Installation above](#installation))
 * New: Confirmed full compatibility with _ClassicPress_ 2.x
 * New: Own translation loader (with WP functions) to also have translations available for the code snippet version of the "plugin"
