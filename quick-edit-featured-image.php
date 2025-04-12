@@ -12,7 +12,7 @@ License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Requires WP:       6.7
 Requires PHP:      7.4
-Requires CP:       2.0.0
+Requires CP:       2.0
 Update URI:        https://github.com/deckerweb/quick-edit-featured-image/
 GitHub Plugin URI: https://github.com/deckerweb/quick-edit-featured-image
 Primary Branch:    main
@@ -49,6 +49,39 @@ class DDW_Quick_Edit_Featured_Image {
 		add_action( 'admin_enqueue_scripts',      array( $this, 'admin_inline_styles_scripts' ) );
 		
 		add_filter( 'debug_information',          array( $this, 'site_health_debug_info' ), 9 );
+	}
+	
+	/**
+	 * Load translations.
+	 *   Normally we wouldn't do that since WP 6.5, but since this plugin does
+	 *   not come from wordpress.org plugin repository, we have to care for
+	 *   loading ourselves. We first look in wp-content/languages subfolder,
+	 *   then in plugin subfolder. That way translations can also be used for
+	 *   code snippet version of this plugin.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @uses get_user_locale() | load_textdomain() | load_plugin_textdomain()
+	 */
+	public function load_translations() {
+		
+		/** Set unique textdomain string */
+		$qefi_textdomain = 'quick-edit-featured-image';
+		
+		/** The 'plugin_locale' filter is also used by default in load_plugin_textdomain() */
+		$locale = apply_filters( 'plugin_locale', get_user_locale(), $qefi_textdomain );
+		
+		/**
+		 * WordPress languages directory
+		 *   Will default to: wp-content/languages/quick-edit-featured-image/quick-edit-featured-image-{locale}.mo
+		 */
+		$pat_wp_lang_dir = trailingslashit( WP_LANG_DIR ) . trailingslashit( $qefi_textdomain ) . $qefi_textdomain . '-' . $locale . '.mo';
+		
+		/** Translations: First, look in WordPress' "languages" folder = custom & update-safe! */
+		load_textdomain( $qefi_textdomain, $pat_wp_lang_dir );
+		
+		/** Secondly, look in plugin's "languages" subfolder = default */
+		load_plugin_textdomain( $qefi_textdomain, FALSE, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . 'languages' );
 	}
 	
 	/**
@@ -105,10 +138,12 @@ class DDW_Quick_Edit_Featured_Image {
 	 * @uses get_post_type_object()
 	 * @uses $this->get_current_post_type()
 	 *
-	 * @param string $type  Key of the string type to output.
+	 * @param  string $type    Key of the string type to output.
 	 * @return string $string  Key of used language string.
 	 */
 	private function image_strings( $type ) {
+		
+		$this->load_translations();
 		
 		$german = [ 'de_DE', 'de_DE_formal', 'de_AT', 'de_CH', 'de_LU' ];
 		$locale = get_user_locale();
@@ -118,12 +153,25 @@ class DDW_Quick_Edit_Featured_Image {
 		//$label_set_featured_image    = $post_type->labels->set_featured_image;
 		//$label_remove_featured_image = $post_type->labels->remove_featured_image;
 		
-		$image                 = ( in_array( $locale, $german ) ) ? 'Bild' : __( 'Image', 'quick-edit-featured-image' );
-		$featured_image        = ( in_array( $locale, $german ) ) ? $label_featured_image : __( 'Featured Image', 'quick-edit-featured-image' );
-		$set_featured_image    = ( in_array( $locale, $german ) ) ? $label_featured_image . ' festlegen' : __( 'Set Featured Image', 'quick-edit-featured-image' );
-		$remove_featured_image = ( in_array( $locale, $german ) ) ? $label_featured_image . ' entfernen' : __( 'Remove Featured Image', 'quick-edit-featured-image' );
-		$image_ok              = ( in_array( $locale, $german ) ) ? $label_featured_image . ' ist gesetzt' : __( 'Featured Image is set', 'quick-edit-featured-image' );
-		$placeholder           = ( in_array( $locale, $german ) ) ? 'Derzeit kein ' . $label_featured_image . ' festgelegt' : __( 'No Featured Image yet', 'quick-edit-featured-image' );
+		$image                 = _x( 'Image', 'Name of the Admin List Table column', 'quick-edit-featured-image' );
+		$featured_image        = ( ! empty( $label_featured_image ) ) ? $label_featured_image : __( 'Featured Image', 'quick-edit-featured-image' );
+		$set_featured_image    = sprintf( __( 'Set %s', 'quick-edit-featured-image' ), $label_featured_image );
+		$remove_featured_image = sprintf( __( 'Remove %s', 'quick-edit-featured-image' ), $label_featured_image );
+		$image_ok              = sprintf( __( '%s is set', 'quick-edit-featured-image' ), $label_featured_image );
+		$placeholder           = sprintf( __( 'No %s yet', 'quick-edit-featured-image' ), $label_featured_image );
+		
+		/**
+		 * When user defines, plus German context, use German strings without WP translation files
+		 * NOTE: Only useful when using as Code Snippet version (requires custom coding!)
+		 */
+		if ( ( defined( 'QEFI_GERMAN_STRINGS' ) && 'ja' === sanitize_key( QEFI_GERMAN_STRINGS ) ) && in_array( $locale, $german ) ) {
+			$image                 = 'Bild';
+			$featured_image        = $label_featured_image;
+			$set_featured_image    = $label_featured_image . ' festlegen';
+			$remove_featured_image = $label_featured_image . ' entfernen';
+			$image_ok              = $label_featured_image . ' ist gesetzt';
+			$placeholder           = 'Derzeit kein ' . $label_featured_image . ' festgelegt';
+		}
 		
 		/** Check string type */
 		switch ( sanitize_key( $type ) ) {
@@ -368,13 +416,66 @@ class DDW_Quick_Edit_Featured_Image {
 		/** Add inline styles to the WP Admin stylesheet */
 		wp_add_inline_style( 'list-tables', $inline_css );
 		
-		/** Register jQery script */
-		wp_register_script(
-			'qefi-featured-image',
-			trailingslashit( plugin_dir_url( __FILE__ ) ) . 'assets/js/qefi.js',
-			array( 'jquery' ),
-			'',
-			TRUE
+		/** Register jQuery script for Media Uploader connection */
+		wp_register_script( 'qefi-featured-image', false );
+		
+		$inline_script = sprintf(
+			"
+			/**
+			 * jQuery script which handles the WP Media Uploader connection
+			 */
+			jQuery(function($){
+			
+				/** Add Featured Image */
+				$('body').on( 'click', '.qefi-upload-img', function( event ) {
+					event.preventDefault();
+			
+					const button = $(this);
+					const customUploader = wp.media({
+						title: qefi_strings.set_featured_image,	// 'Set featured image'
+						library : { type : 'image' },
+						button: { text: qefi_strings.set_featured_image },
+					}).on( 'select', () => {
+						const attachment = customUploader.state().get('selection').first().toJSON();
+						button.removeClass('button').html( '<img src=\"' + attachment.url + '\" />').next().val(attachment.id).parent().next().show();
+					}).open();
+			
+				});
+			
+				/** Remove Featured image */
+				$('body').on('click', '.qefi-remove-img', function( event ) {
+					event.preventDefault();
+					$(this).hide().prev().find( '[name=\"_thumbnail_id\"]').val('-1').prev().html( qefi_strings.set_featured_image ).addClass('button');
+				});
+			
+				const %swp_inline_edit = inlineEditPost.edit;
+			
+				inlineEditPost.edit = function( id ) {
+					%swp_inline_edit.apply( this, arguments );
+					let postId = 0;
+					if( typeof( id ) == 'object' ) {
+						postId = parseInt( this.getId( id ) );
+					}
+			
+					if ( postId > 0 ) {
+						const editRow = $( '#edit-' + postId )
+						const postRow = $( '#post-' + postId )
+						const featuredImage = $( '.column-qefi_featured_image', postRow ).html()
+						const featuredImageId = $( '.column-qefi_featured_image', postRow ).find('img').data('id')
+			
+						if( featuredImageId != -1 ) {
+			
+							$( ':input[name=\"_thumbnail_id\"]', editRow ).val( featuredImageId ); // ID
+							$( '.qefi-upload-img', editRow ).html( featuredImage ).removeClass( 'button' ); // image HTML
+							$( '.qefi-remove-img', editRow ).show(); // the remove link
+			
+						}
+					}
+				}
+			});
+			",
+			'$',
+			'$'
 		);
 		
 		/** Add only in Edit context */
@@ -387,10 +488,11 @@ class DDW_Quick_Edit_Featured_Image {
 			
 			/** Finally, enqueue the script */
 			wp_enqueue_script( 'qefi-featured-image' );
-			
-			$script_strings = array( 'set_featured_image' => esc_html( $this->image_strings( 'set_featured_image' ) ) );
+			wp_add_inline_script( 'qefi-featured-image', $inline_script );
 			
 			/** Localize strings in the script */
+			$script_strings = array( 'set_featured_image' => esc_html( $this->image_strings( 'set_featured_image' ) ) );
+			
 			wp_localize_script(
 				'qefi-featured-image',
 				'qefi_strings',
@@ -409,8 +511,8 @@ class DDW_Quick_Edit_Featured_Image {
 	 * @return array Modified array of Debug Info.
 	 */
 	public function site_health_debug_info( $debug_info ) {
-	
-		load_plugin_textdomain( 'quick-edit-featured-image', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		
+		$this->load_translations();
 		
 		$string_undefined = esc_html_x( 'Undefined', 'Site Health Debug info', 'quick-edit-featured-image' );
 		$string_enabled   = esc_html_x( 'Enabled', 'Site Health Debug info', 'quick-edit-featured-image' );
