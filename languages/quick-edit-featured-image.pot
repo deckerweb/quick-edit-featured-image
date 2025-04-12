@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quick Edit Featured Image\n"
-"POT-Creation-Date: 2025-04-12 17:15+0200\n"
+"POT-Creation-Date: 2025-04-12 17:17+0200\n"
 "PO-Revision-Date: 2025-03-26 08:44+0100\n"
 "Last-Translator: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
 "Language-Team: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
@@ -20,90 +20,90 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: quick-edit-featured-image.php:158
+#: quick-edit-featured-image.php:156
 msgctxt "Name of the Admin List Table column"
 msgid "Image"
 msgstr ""
 
-#: quick-edit-featured-image.php:159
+#: quick-edit-featured-image.php:157
 msgid "Featured Image"
 msgstr ""
 
-#: quick-edit-featured-image.php:160
+#: quick-edit-featured-image.php:158
 #, php-format
 msgid "Set %s"
 msgstr ""
 
-#: quick-edit-featured-image.php:161
+#: quick-edit-featured-image.php:159
 #, php-format
 msgid "Remove %s"
 msgstr ""
 
-#: quick-edit-featured-image.php:162
+#: quick-edit-featured-image.php:160
 #, php-format
 msgid "%s is set"
 msgstr ""
 
-#: quick-edit-featured-image.php:163
+#: quick-edit-featured-image.php:161
 #, php-format
 msgid "No %s yet"
 msgstr ""
 
-#: quick-edit-featured-image.php:521
+#: quick-edit-featured-image.php:517
 msgctxt "Site Health Debug info"
 msgid "Undefined"
 msgstr ""
 
-#: quick-edit-featured-image.php:522
+#: quick-edit-featured-image.php:518
 msgctxt "Site Health Debug info"
 msgid "Enabled"
 msgstr ""
 
-#: quick-edit-featured-image.php:523
+#: quick-edit-featured-image.php:519
 msgctxt "Site Health Debug info"
 msgid "Disabled"
 msgstr ""
 
-#: quick-edit-featured-image.php:524
+#: quick-edit-featured-image.php:520
 msgctxt "Site Health Debug info"
 msgid "value"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: quick-edit-featured-image.php:528
+#: quick-edit-featured-image.php:524
 msgid "Quick Edit Featured Image"
 msgstr ""
 
-#: quick-edit-featured-image.php:528
+#: quick-edit-featured-image.php:524
 msgid "Plugin"
 msgstr ""
 
-#: quick-edit-featured-image.php:533
+#: quick-edit-featured-image.php:529
 msgid "Plugin version"
 msgstr ""
 
-#: quick-edit-featured-image.php:537
+#: quick-edit-featured-image.php:533
 msgid "WordPress Install Type"
 msgstr ""
 
-#: quick-edit-featured-image.php:538
+#: quick-edit-featured-image.php:534
 msgid "Multisite install"
 msgstr ""
 
-#: quick-edit-featured-image.php:538
+#: quick-edit-featured-image.php:534
 msgid "Single Site install"
 msgstr ""
 
-#: quick-edit-featured-image.php:547
+#: quick-edit-featured-image.php:543
 msgid "All disabled post types"
 msgstr ""
 
-#: quick-edit-featured-image.php:593
+#: quick-edit-featured-image.php:589
 msgctxt "Plugins page listing"
 msgid "Donate"
 msgstr ""
 
-#: quick-edit-featured-image.php:599
+#: quick-edit-featured-image.php:595
 msgctxt "Plugins page listing"
 msgid "Join our Newsletter"
 msgstr ""
