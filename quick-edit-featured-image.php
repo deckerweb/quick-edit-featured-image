@@ -3,6 +3,7 @@
 Plugin Name:       Quick Edit Featured Image
 Plugin URI:        https://github.com/deckerweb/quick-edit-featured-image
 Description:       This lightweight plugin allows to set and remove a Featured Image via the Quick Edit action screen in Post Type List Tables within the WordPress Admin. Out of the box this works for Posts, Pages and any public Post Type which supports Featured Images.
+Project:           Code Snippet: Quick Edit Featured Image
 Version:           1.3.0
 Author:            David Decker – DECKERWEB
 Author URI:        https://deckerweb.de/
