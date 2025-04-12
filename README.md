@@ -38,13 +38,13 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 ## Installation 
 
 #### **Quick Install – as Plugin**
-[![Download Plugin](https://raw.githubusercontent.com/deckerweb/quick-edit-featured-image/refs/heads/master/assets/button-download-plugin.png)](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/quick-edit-featured-image.zip)  
+[![Download Plugin](https://raw.githubusercontent.com/deckerweb/quick-edit-featured-image/refs/heads/main/assets/button-download-plugin.png)](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/quick-edit-featured-image.zip)  
 1. **Download ZIP:** [**quick-edit-featured-image.zip**](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/quick-edit-featured-image.zip)
 2. Upload via WordPress Plugins > Add New > Upload Plugin
 3. Once activated, you’ll see the new admin column "Image" in the Post & Page list tables for example.
   
 #### **Alternative: Use as Code Snippet**  
-[![Download Code Snippet](https://raw.githubusercontent.com/deckerweb/quick-edit-featured-image/refs/heads/master/assets/button-download-snippet.png)](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/ddw-quick-edit-featured-image.code-snippets.json)  
+[![Download Code Snippet](https://raw.githubusercontent.com/deckerweb/quick-edit-featured-image/refs/heads/main/assets/button-download-snippet.png)](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/ddw-quick-edit-featured-image.code-snippets.json)  
 1. **Download .json:** [**ddw-quick-edit-featured-image.code-snippets.json**](https://github.com/deckerweb/quick-edit-featured-image/releases/latest/download/ddw-quick-edit-featured-image.code-snippets.json)
 2. Activate or deactivate in your snippets plugin
 
