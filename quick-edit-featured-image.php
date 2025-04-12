@@ -3,7 +3,7 @@
 Plugin Name:       Quick Edit Featured Image
 Plugin URI:        https://github.com/deckerweb/quick-edit-featured-image
 Description:       This lightweight plugin allows to set and remove a Featured Image via the Quick Edit action screen in Post Type List Tables within the WordPress Admin. Out of the box this works for Posts, Pages and any public Post Type which supports Featured Images.
-Version:           1.2.0
+Version:           1.3.0
 Author:            David Decker – DECKERWEB
 Author URI:        https://deckerweb.de/
 Text Domain:       quick-edit-featured-image
@@ -29,7 +29,7 @@ ClassicPress	2.4.x
 VERSION HISTORY:
 Date        Version     Description
 --------------------------------------------------------------------------------------------------------------
-2025-04-??	1.3.0		New: Plugin usable as Code Snippet
+2025-04-12	1.3.0		New: Plugin usable as Code Snippet
 						New: Confirmed full compatibility with _ClassicPress_ 2.x
 						Improved: Translation loading (including snippet version)
 2ß25-04-06	1.2.0		New: Installable and updateable via Git Updater plugin
@@ -49,7 +49,7 @@ if ( ! class_exists( 'DDW_Quick_Edit_Featured_Image' ) ) :
 class DDW_Quick_Edit_Featured_Image {
 
 	/** Class constants & variables */
-	private const VERSION = '1.2.0';
+	private const VERSION = '1.3.0';
 	
 	/**
 	 * Constructor
@@ -97,10 +97,10 @@ class DDW_Quick_Edit_Featured_Image {
 		 * WordPress languages directory
 		 *   Will default to: wp-content/languages/quick-edit-featured-image/quick-edit-featured-image-{locale}.mo
 		 */
-		$pat_wp_lang_dir = trailingslashit( WP_LANG_DIR ) . trailingslashit( $qefi_textdomain ) . $qefi_textdomain . '-' . $locale . '.mo';
+		$qefi_wp_lang_dir = trailingslashit( WP_LANG_DIR ) . trailingslashit( $qefi_textdomain ) . $qefi_textdomain . '-' . $locale . '.mo';
 		
 		/** Translations: First, look in WordPress' "languages" folder = custom & update-safe! */
-		load_textdomain( $qefi_textdomain, $pat_wp_lang_dir );
+		load_textdomain( $qefi_textdomain, $qefi_wp_lang_dir );
 		
 		/** Secondly, look in plugin's "languages" subfolder = default */
 		load_plugin_textdomain( $qefi_textdomain, FALSE, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . 'languages' );
@@ -183,8 +183,8 @@ class DDW_Quick_Edit_Featured_Image {
 		$placeholder           = sprintf( __( 'No %s yet', 'quick-edit-featured-image' ), $label_featured_image );
 		
 		/**
-		 * When user defines, plus German context, use German strings without WP translation files
-		 * NOTE: Only useful when using as Code Snippet version (requires custom coding!)
+		 * Via custom tweak, when German locale, use German strings without WP translation files.
+		 * NOTE: Use with snippet version of plugin (requires custom coding!)
 		 */
 		if ( ( defined( 'QEFI_GERMAN_STRINGS' ) && 'ja' === sanitize_key( QEFI_GERMAN_STRINGS ) ) && in_array( $locale, $german ) ) {
 			$image                 = 'Bild';
@@ -520,7 +520,6 @@ class DDW_Quick_Edit_Featured_Image {
 				'qefi_strings',
 				$script_strings
 			);
-			
 		}  // end if
 	}
 	
@@ -540,19 +539,27 @@ class DDW_Quick_Edit_Featured_Image {
 		$string_enabled   = esc_html_x( 'Enabled', 'Site Health Debug info', 'quick-edit-featured-image' );
 		$string_disabled  = esc_html_x( 'Disabled', 'Site Health Debug info', 'quick-edit-featured-image' );
 		$string_value     = ' – ' . esc_html_x( 'value', 'Site Health Debug info', 'quick-edit-featured-image' ) . ': ';
-	
+		
 		/** Add our Debug info */
 		$debug_info[ 'quick-edit-featured-image' ] = array(
 			'label'  => esc_html__( 'Quick Edit Featured Image', 'quick-edit-featured-image' ) . ' (' . esc_html__( 'Plugin', 'quick-edit-featured-image' ) . ')',
 			'fields' => array(
 	
 				/** Various values */
-				'snqn_plugin_version' => array(
+				'qefi_plugin_version' => array(
 					'label' => esc_html__( 'Plugin version', 'quick-edit-featured-image' ),
 					'value' => self::VERSION,
 				),
-				'snqn_install_type' => array(
-					'label' => esc_html__( 'WordPress Install Type', 'quick-edit-featured-image' ),
+				'qefi_install_type' => array(
+					'label' => esc_html__( 'Plugin or Snippet?', 'quick-edit-featured-image' ),
+					'value' => is_plugin_active( 'quick-edit-featured-image/quick-edit-featured-image.php' ) ? esc_html__( 'Plugin is active', 'quick-edit-featured-image' ) : esc_html__( 'Snippet is active', 'quick-edit-featured-image' ),
+				),
+				'qefi_cms_install_type' => array(
+					'label' => sprintf(
+						/* translators: %s – the CMS used, WordPress or ClassicPress (fork of WP) */
+						esc_html__( '%s Install Type', 'quick-edit-featured-image' ),
+						function_exists( 'classicpress_version' ) ? 'ClassicPress' : 'WordPress'
+					),
 					'value' => ( is_multisite() ? esc_html__( 'Multisite install', 'quick-edit-featured-image' ) : esc_html__( 'Single Site install', 'quick-edit-featured-image' ) ),
 				),
 	
@@ -564,6 +571,10 @@ class DDW_Quick_Edit_Featured_Image {
 				'qefi_all_disabled_types' => array(
 					'label' => esc_html__( 'All disabled post types', 'quick-edit-featured-image' ),
 					'value' => implode( ', ', array_map( 'sanitize_key', $this->post_types_disable() ) ),
+				),
+				'QEFI_GERMAN_STRINGS' => array(
+					'label' => 'QEFI_GERMAN_STRINGS',
+					'value' => ( ! defined( 'QEFI_GERMAN_STRINGS' ) ? $string_undefined : ( QEFI_GERMAN_STRINGS ? $string_enabled . $string_value . esc_html( QEFI_GERMAN_STRINGS ) : $string_disabled ) ),
 				),
 			),  // end array
 		);
