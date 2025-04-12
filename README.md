@@ -52,8 +52,7 @@ This snippet version is for: _Code Snippets_ (free & Pro), _Advanced Scripts_ (P
 ➔ just use their elegant script import features  
 ➔ in _Scripts Organizer_ use the "Code Snippets Import"  
 
-For all other snippet manager plugins just use our plugin's main `.php` file [`quick-edit-featured-image.php`](https://github.com/deckerweb/quick-edit-featured-image/blob/master/quick-edit-featured-image.php) and use its content as snippet (bevor saving your snippet: please check for your plugin if the opening `<?php` tag needs to be removed or not!).  
-Also NOTE: When using the snippet version you have to re-save the Permalinks in WordPress _after activating_ the code snippet!
+For all other snippet manager plugins just use our plugin's main `.php` file [`quick-edit-featured-image.php`](https://github.com/deckerweb/quick-edit-featured-image/blob/master/quick-edit-featured-image.php) and use its content as snippet (before saving your snippet: please check for your plugin if the opening `<?php` tag needs to be removed or not!).
 
 ➔ Please decide for _one_ of both alternatives!
 
