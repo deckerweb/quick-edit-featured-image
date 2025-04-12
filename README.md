@@ -157,7 +157,7 @@ You can still use the "old" `.mo` files like so:
 /wp-content/languages/quick-edit-featured-image/quick-edit-featured-image-de_DE_formal.mo
 /wp-content/languages/quick-edit-featured-image/quick-edit-featured-image-fr_FR.mo
 ```
-The easiest way to create your own translations is with the packaged `.pot` file and the app _Poedit_ – which can also create the `l10n.php` files since _Poedit 3.6_!
+The easiest way to create your own translations is with the packaged `.pot` file and the app [_**Poedit**_](https://poedit.net/) – which can also create the `l10n.php` files since [_Poedit 3.6_](https://poedit.net/news/poedit-3.6-universal-merging/)!
 
 NOTE: This folder location is update-safe and will not overwritten by WordPress when updating language packs (for WP, Plugins, Themes). Updates to translations you need to handle yourself (that's the price of freedom from .org).
 
